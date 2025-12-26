@@ -1,7 +1,6 @@
 'use client';
 import Link from "next/link";
 import React, { use, useEffect, useState } from "react";
-import DataFetchingClientId from "./[dataid]/page";
 
 export interface Tour {
   id: number;
