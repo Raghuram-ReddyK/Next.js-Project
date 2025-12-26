@@ -1,0 +1,66 @@
+{
+    "tours": [
+        {
+            "id": 1,
+            "title": "Explore the Mountains",
+            "description": "A thrilling adventure through the rocky terrains.",
+            "price": 299.99
+        },
+        {
+            "id": 2,
+            "title": "Beachside Relaxation",
+            "description": "Unwind on the sunny beaches with crystal clear waters.",
+            "price": 199.99
+        },
+        {
+            "id": 3,
+            "title": "City Lights Tour",
+            "description": "Experience the vibrant nightlife and iconic landmarks.",
+            "price": 149.99
+        },
+        {
+            "id": 4,
+            "title": "Cultural Heritage Walk",
+            "description": "Discover the rich history and culture of ancient cities.",
+            "price": 99.99
+        },
+        {
+            "id": 5,
+            "title": "Wildlife Safari",
+            "description": "Get up close with nature and its magnificent creatures.",
+            "price": 399.99
+        },
+        {
+            "id": 6,
+            "title": "Gastronomic Journey",
+            "description": "Savor the flavors of world-renowned cuisines.",
+            "price": 249.99
+        },
+        {
+            "id": 7,
+            "title": "Desert Expedition",
+            "description": "Experience the mystique of vast deserts and starry nights.",
+            "price": 349.99
+        },
+        {
+            "id": 8,
+            "title": "Island Hopping",
+            "description": "Explore multiple islands and their unique charms.",
+            "price": 279.99
+        },
+        {
+            "id": 9,
+            "title": "Historical Monuments Tour",
+            "description": "Visit some of the world's most famous historical sites.",
+            "price": 159.99
+        },
+        {
+            "id": 10,
+            "title": "Adventure Sports Package",
+            "description": "Thrilling activities including bungee jumping, rafting, and more.",
+            "price": 459.99
+        }
+    ],
+    "bookings": [],
+    "reviews": []
+}
