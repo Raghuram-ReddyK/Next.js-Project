@@ -1,33 +1,20 @@
 import Link from "next/link";
 import React from "react";
 import { notFound } from "next/navigation";
-
-interface Tour {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-}
+import ToursSchema from "../../lib/models/toursModel";
+import connectDB from "../../lib/connectDB";
 
 const fetchData = async (dataid: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/tours/${dataid}`, {
-            cache: 'no-cache'
-        });
-        if (!response.ok) {
-            if (response.status === 404) {
-                notFound();
-            }
-            throw new Error(`Failed to fetch tour: ${response.status} ${response.statusText}`);
+        await connectDB();
+        const tour = await ToursSchema.findById(dataid);
+        if (!tour) {
+            notFound();
         }
-        const result = await response.json();
-        return result;
+        return tour;
     } catch (error) {
         console.error('Error fetching data:', error);
-        if (error instanceof Error) {
-            throw error;
-        }
-        throw new Error('Unknown error occurred while fetching tour');
+        throw new Error('Failed to fetch tour');
     }
 }
 
