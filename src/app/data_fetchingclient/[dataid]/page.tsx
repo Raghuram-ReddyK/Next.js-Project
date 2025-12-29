@@ -2,7 +2,7 @@
 import React, { useEffect, useState, use } from "react";
 import { Tour } from "../page";
 
-const DataFetchingClientId = ({ params }: { params: Promise<{ dataid: string }> }) => {
+const DataFetchingClientId = ({ params }: { params: Promise<{  dataid: string }> }) => {
   const { dataid } = use(params);
   const [tour, setTour] = useState<Tour | null>(null);
   const [error, setError] = useState<string>("");
@@ -12,12 +12,12 @@ const DataFetchingClientId = ({ params }: { params: Promise<{ dataid: string }> 
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`http://localhost:5000/tours/${dataid}`);
+        const response = await fetch(`http://localhost:3000/api/tours/${dataid}`);
         if (!response.ok) {
           throw new Error('Failed to fetch tour');
         }
-        const result: Tour = await response.json();
-        setTour(result);
+        const result = await response.json();
+        setTour(result.data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An unexpected error occurred");
       } finally {

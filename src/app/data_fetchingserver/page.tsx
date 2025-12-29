@@ -1,23 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import ToursSchema from "../lib/models/toursModel";
+import connectDB from "../lib/connectDB";
 
 interface Tour {
-    id: number;
+    _id: string;
     title: string;
     description: string;
     price: number;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 const fetchData = async () => {
     try {
-        const response = await fetch('http://localhost:5000/tours', {
-            cache: 'no-cache'
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to fetch tours: ${response.status} ${response.statusText}`);
-        }
-        const result = await response.json();
-        return { data: result, error: null };
+        await connectDB();
+        const tours = await ToursSchema.find({});
+        return { data: tours, error: null };
     } catch (error) {
         console.error('Error fetching data:', error);
         return { data: null, error: error instanceof Error ? error.message : 'Unknown error occurred' };
@@ -52,7 +51,7 @@ const DataFetchServer = async () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {tours?.map((tour: Tour) => (
-                            <div key={tour.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div key={tour._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                                 <div className="h-48 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center">
                                     <div className="text-center text-white">
                                         <div className="text-4xl mb-2">✈️</div>
@@ -65,7 +64,7 @@ const DataFetchServer = async () => {
                                     <div className="flex items-center justify-between">
                                         <span className="text-2xl font-bold text-green-600">${tour.price}</span>
                                         <Link
-                                            href={`/data_fetchingserver/${tour.id}`}
+                                            href={`/data_fetchingserver/${tour._id}`}
                                             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                                         >
                                             View Details
