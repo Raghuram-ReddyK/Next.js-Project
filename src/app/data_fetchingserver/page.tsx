@@ -47,7 +47,7 @@ const DataFetchServer = async () => {
                     <div className="text-center py-12">
                         <div className="text-6xl mb-4">🏖️</div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-4">No Tours Available</h2>
-                        <p className="text-gray-600">We're working on adding new adventures. Check back soon!</p>
+                        <p className="text-gray-600">We&apos;re working on adding new adventures. Check back soon!</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
